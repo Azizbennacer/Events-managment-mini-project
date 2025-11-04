@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavigationBar from './components/NavigationBar';
+import AddEvent from './components/AddEvent';
+import UpdateEvent from './components/UpdateEvent';
+import { Events } from './components/Events';
+import Home from './components/Home'; 
+import logo from './logo.svg';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <main className="App-header">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/add" element={<AddEvent />} />
+            <Route path="/events/:id/updateEvent" element={<UpdateEvent />} />
+          </Routes>
+        </main>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <NavigationBar />
+        </header>
+
+        
+      </div>
+    </Router>
   );
 }
 
